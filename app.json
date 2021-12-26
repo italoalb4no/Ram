@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Ram",
+    "slug": "Ram",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Ram"
+}
