@@ -4,6 +4,7 @@ import {StyleSheet, SafeAreaView} from "react-native";
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import WelcomeScreen from "./Screens/WelcomeScreen";
+import LocationScreen from "./Screens/LocationScreen";
 
 export default function App() {
 
@@ -22,6 +23,11 @@ export default function App() {
                         name = "Welcome"
                         component = { WelcomeScreen }
                         options = {{ title: "Welcome"}}
+                    />
+
+                    <Stack.Screen
+                        name = "LocationScreen"
+                        component = {LocationScreen}
                     />
 
                     <Stack.Screen
