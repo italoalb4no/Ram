@@ -11,12 +11,13 @@ export default class Map extends Component{
     };
 
     render(){
-        const {componentStyle, initialRegion, children} = this.props;
+        const {componentStyle, initialRegion, region,  children} = this.props;
         if(Platform.OS === "ios") {
             return (
                 <MapView
                     style = {componentStyle}
                     initialRegion = {initialRegion}
+                    region = {region}
                 >
                     {children}
                     {/*<Marker*/}

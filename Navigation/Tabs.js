@@ -27,7 +27,7 @@ const Tabs = () => {
                         display: "flex",
                         position: 'absolute',
                         keyboardHidesTabBar: true,
-                        bottom: 25,
+                        bottom: 18,
                         left: 20,
                         right: 20,
                         elevation: 0,

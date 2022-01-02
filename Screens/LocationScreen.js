@@ -19,7 +19,7 @@ import GOOGLE_AUTOCOMPLETE_API_KEY from '../config'
 const LocationScreen = ({ navigation, route}) => {
     const [location, setLocationInInput] = useState(null)
 
-    const [showNextPageButton, setNextPage] = useState(true)
+    const [showNextPageButton, setNextPage] = useState(false)
 
     const [pin, setPin] = useState({
         latitude: 51.509865,
@@ -35,48 +35,47 @@ const LocationScreen = ({ navigation, route}) => {
 
     return (
         <View style = {styles.container}>
-            {/*<Text style = {styles.text}>Pick a preferred location:</Text>*/}
+            <Text style = {styles.text}>Pick a preferred location:</Text>
 
-            {/*<View style = {styles.search_section}>*/}
-            {/*    <TextInput*/}
-            {/*        style = {styles.search_bar}*/}
-            {/*        placeholder = "Search a location..."*/}
-            {/*        value = {location}*/}
-            {/*        multiline = {true}*/}
-            {/*        autoCapitalize = "sentences"*/}
-            {/*        autoCorrect = {true}*/}
-            {/*        keyboardType = "default"*/}
-            {/*        returnKeyType = "done"*/}
-            {/*    />*/}
-            {/*    <TouchableOpacity>*/}
-            {/*        <Image*/}
-            {/*            style = {styles.search_button}*/}
-            {/*            source = {require("../Assets/Icons/search_icon.png")}*/}
-            {/*        />*/}
-            {/*    </TouchableOpacity>*/}
-            {/*</View>*/}
-            {/*<View style = {styles.geolocalization_button_container}>*/}
-            {/*    <Button*/}
-            {/*        title = "Use Geolocalization"*/}
-            {/*        onPress = {() => navigation.navigate('LocationScreen')}*/}
-            {/*    />*/}
-            {/*</View>*/}
+            <View style = {styles.search_section}>
             <View style = {styles.google_places_autocomplete_container} >
                 <GooglePlacesAutocomplete
                     placeholder = 'Search'
+                    fetchDetails = {true}
+                    GooglePlacesSearchQuery = {{
+                        rankby: "distance"
+                    }}
                     onPress = {(data, details = null) => {
                         // 'details' is provided when fetchDetails = true
-                        console.log(data, details);
+                        //console.log(data, details);
+                        setRegion({
+                            latitude: details.geometry.location.lat,
+                            longitude: details.geometry.location.lng,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421
+                        })
+                        setNextPage(true)
                     }}
                     query = {{
                         key: GOOGLE_AUTOCOMPLETE_API_KEY,
                         language: 'en',
+                        components: "country:GB",
+                        types: "address",
+                        radius: 3000,
+                        location: `${region.latitude}, ${region.longitude}`
                     }}
                     styles={{
                         container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
                         listView: { backgroundColor: "white" }
                     }}
                 />
+                {/*<TouchableOpacity>*/}
+                {/*    <Image*/}
+                {/*        style = {styles.search_button}*/}
+                {/*        source = {require("../Assets/Icons/search_icon.png")}*/}
+                {/*    />*/}
+                {/*</TouchableOpacity>*/}
+            </View>
             </View>
             <Map
                 componentStyle = {styles.map}
@@ -84,11 +83,12 @@ const LocationScreen = ({ navigation, route}) => {
                     latitude: 51.509865,
                     longitude: -0.118092,
                     latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
+                    longitudeDelta: 0.0421
                 }}
+                region = {region}
             >
                 <Marker
-                    coordinate={pin}
+                    coordinate={region}
                     pinColor="black"
                     draggable={true}
                     onDragEnd={(e) => {
@@ -102,7 +102,7 @@ const LocationScreen = ({ navigation, route}) => {
                         <Text>I'm here</Text>
                     </Callout>
                 </Marker>
-                <Circle center={pin} radius={1000} />
+                <Circle center={region} radius={1000} />
             </Map>
 
             { showNextPageButton &&
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     google_places_autocomplete_container: {
-        marginTop: 60
+        flex: 1,
     },
     text: {
         fontFamily: "RibeyeMarrow-Regular",
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     map: {
         position: 'absolute',
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height - 300,
+        height: Dimensions.get('window').height * 0.6,
         bottom: 0,
         borderRadius: 25
     }
