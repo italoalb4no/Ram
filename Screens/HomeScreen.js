@@ -1,4 +1,4 @@
-//import {Styles} from "../Styles"
+import React, {useState} from 'react'
 import Map from "../Components/Map"
 import {
     Text,
@@ -9,14 +9,20 @@ import {
     Dimensions,
 
 } from 'react-native';
-import * as React from "react";
 import DeviceInfo from "react-native-device-info";
 
 const HomeScreen = () =>{
+    const [region, setRegion] = useState({
+        latitude: 51.509865,
+        longitude: -0.118092,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+    })
     return (
         <View style = {Styles.homescreen_container}>
             <Map
                 componentStyle = {Styles.homescreen_map}
+                region = {region}
             />
 
             <TouchableOpacity style = {Styles.homescreen_title_widget}>

@@ -17,14 +17,8 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import GOOGLE_AUTOCOMPLETE_API_KEY from '../config'
 
 const LocationScreen = ({ navigation, route}) => {
-    const [location, setLocationInInput] = useState(null)
 
     const [showNextPageButton, setNextPage] = useState(false)
-
-    const [pin, setPin] = useState({
-        latitude: 51.509865,
-        longitude: -0.118092,
-    })
 
     const [region, setRegion] = useState({
         latitude: 51.509865,
@@ -90,25 +84,30 @@ const LocationScreen = ({ navigation, route}) => {
                 <Marker
                     coordinate={region}
                     pinColor="black"
-                    draggable={true}
-                    onDragEnd={(e) => {
-                        setPin({
-                            latitude: e.nativeEvent.coordinate.latitude,
-                            longitude: e.nativeEvent.coordinate.longitude
-                        })
-                    }}
+                    // draggable={true}
+                    // onDragEnd={(e) => {
+                    //     setRegion({
+                    //         latitude: e.nativeEvent.coordinate.latitude,
+                    //         longitude: e.nativeEvent.coordinate.longitude,
+                    //         latitudeDelta: 0.0922,
+                    //         longitudeDelta: 0.0421
+                    //     })
+                    // }}
                 >
                     <Callout>
                         <Text>I'm here</Text>
                     </Callout>
                 </Marker>
-                <Circle center={region} radius={1000} />
+                <Circle center = {region} radius={1000} />
             </Map>
 
             { showNextPageButton &&
                 <TouchableOpacity
                     style = {styles.next_page_section}
-                    onPress = {() => navigation.navigate('MyApp')}
+                    onPress = {() => navigation.navigate('MyApp', {
+                        latitude: region.latitude,
+                        longitude: region.longitude
+                    })}
                 >
                     <Image
                         source = {require("../Assets/Icons/arrow.png")}
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
         //borderWidth: 1,
     },
     search_section: {
-        top: DeviceInfo.hasNotch() ? 80 : 40,
+        top: DeviceInfo.hasNotch() ? 80 : 50,
         position: 'absolute',
         width: '100%',
         flexDirection: 'row',
@@ -159,14 +158,6 @@ const styles = StyleSheet.create({
     search_button: {
       width: 50,
       height: 50,
-    },
-    geolocalization_button_container: {
-        position: "absolute",
-        top: DeviceInfo.hasNotch() ? 120 : 80,
-        //flexDirection: "row",
-        alignItems: "flex-start",
-        width: "100%",
-        paddingLeft: 20
     },
     next_page_section: {
         position: 'absolute',
