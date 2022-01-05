@@ -1,0 +1,193 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.my"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="30" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:5:3-75
+11-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:5:20-73
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:3:3-64
+12-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:3:20-62
+13    <uses-permission android:name="android.permission.VIBRATE" /> <!-- These require runtime permissions on M -->
+13-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:6:3-63
+13-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:6:20-61
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:8:3-77
+14-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:8:20-75
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- END OPTIONAL PERMISSIONS -->
+15-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:9:3-78
+15-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:9:20-76
+16    <queries>
+16-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:12:3-19:13
+17
+18        <!-- Support checking for http(s) links via the Linking API -->
+19        <intent>
+19-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:14:5-18:14
+20            <action android:name="android.intent.action.VIEW" />
+20-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:15:7-59
+20-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:15:15-56
+21
+22            <category android:name="android.intent.category.BROWSABLE" />
+22-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:16:7-68
+22-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:16:17-65
+23
+24            <data android:scheme="https" />
+24-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:17:7-38
+24-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:17:13-35
+25        </intent>
+26        <!-- Query open documents -->
+27        <intent>
+27-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
+28            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+28-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
+28-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
+29        </intent>
+30    </queries>
+31
+32    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+32-->[com.facebook.flipper:flipper:0.54.0] /Users/italoalbano/.gradle/caches/transforms-3/62ece1a98ef095db320a1cbbfb42e6fd/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:5-76
+32-->[com.facebook.flipper:flipper:0.54.0] /Users/italoalbano/.gradle/caches/transforms-3/62ece1a98ef095db320a1cbbfb42e6fd/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:22-73
+33    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+33-->[:react-native-maps] /Users/italoalbano/Desktop/Ram/node_modules/react-native-maps/lib/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-81
+33-->[:react-native-maps] /Users/italoalbano/Desktop/Ram/node_modules/react-native-maps/lib/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:22-78
+34    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- Include required permissions for Google Maps API to run. -->
+34-->[com.google.android.gms:play-services-iid:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/8b586cb528bf9b77825916c62ee554f6/transformed/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:5-82
+34-->[com.google.android.gms:play-services-iid:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/8b586cb528bf9b77825916c62ee554f6/transformed/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:22-79
+35    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+35-->[com.google.android.gms:play-services-maps:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/be2f60d3ca5e09744cd4e8e129d788fd/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+35-->[com.google.android.gms:play-services-maps:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/be2f60d3ca5e09744cd4e8e129d788fd/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:22-76
+36
+37    <uses-feature
+37-->[com.google.android.gms:play-services-maps:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/be2f60d3ca5e09744cd4e8e129d788fd/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+38        android:glEsVersion="0x00020000"
+38-->[com.google.android.gms:play-services-maps:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/be2f60d3ca5e09744cd4e8e129d788fd/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+39        android:required="true" />
+39-->[com.google.android.gms:play-services-maps:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/be2f60d3ca5e09744cd4e8e129d788fd/transformed/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+40
+41    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+41-->[com.android.installreferrer:installreferrer:1.1.2] /Users/italoalbano/.gradle/caches/transforms-3/8b1846458bb2c5b7b5904ff85deca865/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:5-110
+41-->[com.android.installreferrer:installreferrer:1.1.2] /Users/italoalbano/.gradle/caches/transforms-3/8b1846458bb2c5b7b5904ff85deca865/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:22-107
+42
+43    <application
+43-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:3-35:17
+44        android:name="com.my.MainApplication"
+44-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:16-47
+45        android:allowBackup="false"
+45-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:162-189
+46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+46-->[androidx.core:core:1.3.0] /Users/italoalbano/.gradle/caches/transforms-3/d15795c47be914585ca458b102a40944/transformed/core-1.3.0/AndroidManifest.xml:24:18-86
+47        android:debuggable="true"
+48        android:icon="@mipmap/ic_launcher"
+48-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:81-115
+49        android:label="@string/app_name"
+49-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:48-80
+50        android:roundIcon="@mipmap/ic_launcher_round"
+50-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:116-161
+51        android:theme="@style/AppTheme"
+51-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:190-221
+52        android:usesCleartextTraffic="true" >
+52-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:21:222-257
+53        <meta-data
+53-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:22:5-24:69
+54            android:name="com.google.android.geo.API_KEY"
+54-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:23:12-57
+55            android:value="AIzaSyD_MuWIUP5kN_SRhOLQPNnJB6tZWzY5rsM" />
+55-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:24:12-67
+56        <meta-data
+56-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:25:5-103
+57            android:name="expo.modules.updates.EXPO_UPDATE_URL"
+57-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:25:16-67
+58            android:value="YOUR-APP-URL-HERE" />
+58-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:25:68-101
+59        <meta-data
+59-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:26:5-112
+60            android:name="expo.modules.updates.EXPO_SDK_VERSION"
+60-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:26:16-68
+61            android:value="YOUR-APP-SDK-VERSION-HERE" />
+61-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:26:69-110
+62
+63        <activity
+63-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:27:5-32:16
+64            android:name="com.my.MainActivity"
+64-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:27:15-43
+65            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+65-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:27:77-154
+66            android:label="@string/app_name"
+66-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:27:44-76
+67            android:launchMode="singleTask"
+67-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:27:155-186
+68            android:theme="@style/Theme.App.SplashScreen"
+68-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:27:230-275
+69            android:windowSoftInputMode="adjustResize" >
+69-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:27:187-229
+70            <intent-filter>
+70-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:28:7-31:23
+71                <action android:name="android.intent.action.MAIN" />
+71-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:29:9-60
+71-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:29:17-58
+72
+73                <category android:name="android.intent.category.LAUNCHER" />
+73-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:30:9-68
+73-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:30:19-66
+74            </intent-filter>
+75        </activity>
+76        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+76-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:33:5-81
+76-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:33:15-79
+77
+78        <uses-library
+78-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:34:5-83
+79            android:name="org.apache.http.legacy"
+79-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:34:19-56
+80            android:required="false" />
+80-->/Users/italoalbano/Desktop/Ram/android/app/src/main/AndroidManifest.xml:34:57-81
+81
+82        <provider
+82-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
+83            android:name="expo.modules.filesystem.FileSystemFileProvider"
+83-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
+84            android:authorities="com.my.FileSystemFileProvider"
+84-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
+85            android:exported="false"
+85-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
+86            android:grantUriPermissions="true" >
+86-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
+87            <meta-data
+87-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-33:70
+88                android:name="android.support.FILE_PROVIDER_PATHS"
+88-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-67
+89                android:resource="@xml/file_system_provider_paths" />
+89-->[:expo-file-system] /Users/italoalbano/Desktop/Ram/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:17-67
+90        </provider>
+91
+92        <meta-data
+92-->[:expo-modules-core] /Users/italoalbano/Desktop/Ram/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:89
+93            android:name="org.unimodules.core.AppLoader#react-native-headless"
+93-->[:expo-modules-core] /Users/italoalbano/Desktop/Ram/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
+94            android:value="expo.modules.adapters.react.apploader.RNHeadlessAppLoader" />
+94-->[:expo-modules-core] /Users/italoalbano/Desktop/Ram/node_modules/expo-modules-core/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-86
+95
+96        <activity
+96-->[com.google.android.gms:play-services-base:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/d47104d7d3e76985fe28c350f9ff0f03/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+97            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+97-->[com.google.android.gms:play-services-base:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/d47104d7d3e76985fe28c350f9ff0f03/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+98            android:exported="false"
+98-->[com.google.android.gms:play-services-base:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/d47104d7d3e76985fe28c350f9ff0f03/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+99            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+99-->[com.google.android.gms:play-services-base:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/d47104d7d3e76985fe28c350f9ff0f03/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+100
+101        <meta-data
+101-->[com.google.android.gms:play-services-basement:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/51475fde4d23562144a5d1436682b46e/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+102            android:name="com.google.android.gms.version"
+102-->[com.google.android.gms:play-services-basement:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/51475fde4d23562144a5d1436682b46e/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+103            android:value="@integer/google_play_services_version" />
+103-->[com.google.android.gms:play-services-basement:17.0.0] /Users/italoalbano/.gradle/caches/transforms-3/51475fde4d23562144a5d1436682b46e/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+104    </application>
+105
+106</manifest>

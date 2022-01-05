@@ -1,5 +1,5 @@
 // Italo Albano
-// Moon Studios 2022
+// OMA Studios 2022
 import * as React from 'react';
 import Tabs from './Navigation/Tabs'
 import {StyleSheet, SafeAreaView} from "react-native";
