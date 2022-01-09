@@ -14,11 +14,13 @@ import DeviceInfo from "react-native-device-info"
 import Map from "../Components/Map";
 import {Callout, Marker, Circle} from "react-native-maps";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import PlacesAutocomplete from "../Components/PlacesAutocomplete";
 import GOOGLE_AUTOCOMPLETE_API_KEY from '../config'
 
 const LocationScreen = ({ navigation, route}) => {
 
     const [showNextPageButton, setNextPage] = useState(false)
+    const [textInput, setTextInput] = useState("")
 
     const [region, setRegion] = useState({
         latitude: 51.509865,
@@ -32,16 +34,11 @@ const LocationScreen = ({ navigation, route}) => {
             <Text style = {styles.text}>Pick a preferred location:</Text>
 
             <View style = {styles.search_section}>
-            <View style = {styles.google_places_autocomplete_container} >
-                <GooglePlacesAutocomplete
+                <View style = {styles.google_places_autocomplete_container} >
+                <PlacesAutocomplete
                     placeholder = 'Search'
-                    fetchDetails = {true}
-                    GooglePlacesSearchQuery = {{
-                        rankby: "distance"
-                    }}
-                    onPress = {(data, details = null) => {
+                    onPressF = {(data, details = null) => {
                         // 'details' is provided when fetchDetails = true
-                        //console.log(data, details);
                         setRegion({
                             latitude: details.geometry.location.lat,
                             longitude: details.geometry.location.lng,
@@ -49,6 +46,8 @@ const LocationScreen = ({ navigation, route}) => {
                             longitudeDelta: 0.0421
                         })
                         setNextPage(true)
+                        let x = data["description"].toString()
+                        setTextInput(x)
                     }}
                     query = {{
                         key: GOOGLE_AUTOCOMPLETE_API_KEY,
@@ -62,14 +61,27 @@ const LocationScreen = ({ navigation, route}) => {
                         container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
                         listView: { backgroundColor: "white" }
                     }}
+                    textInputProps = {{
+                        value: textInput,
+                        onChangeText: (textInput) => setTextInput(textInput)
+                    }}
                 />
-                {/*<TouchableOpacity>*/}
-                {/*    <Image*/}
-                {/*        style = {styles.search_button}*/}
-                {/*        source = {require("../Assets/Icons/search_icon.png")}*/}
-                {/*    />*/}
-                {/*</TouchableOpacity>*/}
+                </View>
             </View>
+            <View style = {styles.reset_location_button}>
+                {showNextPageButton && <Button
+                    title="Search for a new location"
+                    onPress={() => {
+                        setTextInput("")
+                        setNextPage(false)
+                        setRegion({
+                            latitude: 51.509865,
+                            longitude: -0.118092,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421
+                        })
+                    }}
+                />}
             </View>
             <Map
                 componentStyle = {styles.map}
@@ -125,6 +137,9 @@ const styles = StyleSheet.create({
     container: {
         //display: "flex",
         flex: 1
+    },
+    reset_location_button: {
+        top: DeviceInfo.hasNotch() ? 100 : 60,
     },
     google_places_autocomplete_container: {
         flex: 1,

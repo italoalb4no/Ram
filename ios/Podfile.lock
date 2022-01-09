@@ -11,9 +11,9 @@ PODS:
     - ExpoModulesCore
   - EXKeepAwake (10.0.1):
     - ExpoModulesCore
-  - Expo (44.0.1):
+  - Expo (44.0.4):
     - ExpoModulesCore
-  - ExpoModulesCore (0.6.3):
+  - ExpoModulesCore (0.6.4):
     - React-Core
     - ReactCommon/turbomodule/core
   - EXSplashScreen (0.14.1):
@@ -291,7 +291,7 @@ PODS:
     - React-perflogger (= 0.64.3)
   - RNDeviceInfo (8.4.8):
     - React-Core
-  - RNReanimated (2.2.4):
+  - RNReanimated (2.3.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -317,7 +317,6 @@ PODS:
     - React-RCTNetwork
     - React-RCTSettings
     - React-RCTText
-    - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
   - RNScreens (3.10.1):
@@ -466,8 +465,8 @@ SPEC CHECKSUMS:
   EXFileSystem: 7d1309ba6b38b82ef7fc9e80174de3f9184ac8b4
   EXFont: 1fb13af43dc517c01c0ff21a6e32f9f9bf2ea602
   EXKeepAwake: b571c2ad8323b2fced6e907766e2549f75119471
-  Expo: f8cd8811d9aee5bc651a3285e1101358db610e0d
-  ExpoModulesCore: d04e519b3e8e21523b195bb21a40144e30f1e163
+  Expo: d9b8b5e49c200471fc473a652a84fe30dee73027
+  ExpoModulesCore: 64abda7af7cf659d2fa092934e29c6f4ea7e849f
   EXSplashScreen: 7872675b95bb07c25f922b3d3dfae70c76fb5a00
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
   FBReactNativeSpec: b8ae9b7b5c47c32a8484fd828a81125123c91716
@@ -498,7 +497,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 493d9abb8b23c3f84e19ae221eeba92cadcb70dc
   ReactCommon: 8fea6422328e2fc093e25c9fac67adbcf0f04fb4
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
-  RNReanimated: 024eff8202342abf4b24e11575a16afc441dabfe
+  RNReanimated: 7f143675d94978c3555345d5bfa8ed6ae800c5d3
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 

@@ -1,5 +1,5 @@
 // Italo Albano
-// OMA Studios 2022
+// SOLCO Digital 2022
 import * as React from 'react';
 import Tabs from './Navigation/Tabs'
 import {StyleSheet, SafeAreaView} from "react-native";

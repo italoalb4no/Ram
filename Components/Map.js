@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 export default class Map extends Component{
     static propTypes = {
-        // Custom style for Botaozudo. Requires object
         componentStyle: PropTypes.object,
     };
 
