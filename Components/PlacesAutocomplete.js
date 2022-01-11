@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import GOOGLE_AUTOCOMPLETE_API_KEY from '../config'
 import PropTypes from "prop-types";
-import {Component, useRef} from "react";
+import {Component} from "react";
 
 export default class PlacesAutocomplete extends Component{
     static propTypes = {

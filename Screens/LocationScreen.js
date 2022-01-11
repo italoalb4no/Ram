@@ -5,22 +5,23 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    TextInput,
-    ScrollView,
     Image,
-    Dimensions
+    Dimensions,
+    Keyboard,
+    TouchableWithoutFeedback, TouchableWithoutFeedbackComponent
 } from 'react-native'
 import DeviceInfo from "react-native-device-info"
 import Map from "../Components/Map";
 import {Callout, Marker, Circle} from "react-native-maps";
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import PlacesAutocomplete from "../Components/PlacesAutocomplete";
 import GOOGLE_AUTOCOMPLETE_API_KEY from '../config'
+import KeyboardListener from 'react-native-keyboard-listener';
 
 const LocationScreen = ({ navigation, route}) => {
 
     const [showNextPageButton, setNextPage] = useState(false)
     const [textInput, setTextInput] = useState("")
+    const [keyboardShown, setKeyboardVisibility] = useState(false)
 
     const [region, setRegion] = useState({
         latitude: 51.509865,
@@ -28,106 +29,115 @@ const LocationScreen = ({ navigation, route}) => {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
     })
-
     return (
         <View style = {styles.container}>
-            <Text style = {styles.text}>Pick a preferred location:</Text>
+            <TouchableWithoutFeedback style = {styles.container} onPress = {Keyboard.dismiss} accessible = {false}>
 
-            <View style = {styles.search_section}>
-                <View style = {styles.google_places_autocomplete_container} >
-                <PlacesAutocomplete
-                    placeholder = 'Search'
-                    onPressF = {(data, details = null) => {
-                        // 'details' is provided when fetchDetails = true
-                        setRegion({
-                            latitude: details.geometry.location.lat,
-                            longitude: details.geometry.location.lng,
-                            latitudeDelta: 0.0922,
-                            longitudeDelta: 0.0421
-                        })
-                        setNextPage(true)
-                        let x = data["description"].toString()
-                        setTextInput(x)
-                    }}
-                    query = {{
-                        key: GOOGLE_AUTOCOMPLETE_API_KEY,
-                        language: 'en',
-                        components: "country:GB",
-                        types: "address",
-                        radius: 3000,
-                        location: `${region.latitude}, ${region.longitude}`
-                    }}
-                    styles={{
-                        container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
-                        listView: { backgroundColor: "white" }
-                    }}
-                    textInputProps = {{
-                        value: textInput,
-                        onChangeText: (textInput) => setTextInput(textInput)
-                    }}
+            <View style = {styles.container}>
+                <Text style = {styles.text}>Pick a preferred location:</Text>
+                <KeyboardListener
+                    onWillShow={() => { setKeyboardVisibility(true)}}
+                    onWillHide={() => { setKeyboardVisibility(false)}}
                 />
-                </View>
-            </View>
-            <View style = {styles.reset_location_button}>
-                {showNextPageButton && <Button
-                    title="Search for a new location"
-                    onPress={() => {
-                        setTextInput("")
-                        setNextPage(false)
-                        setRegion({
-                            latitude: 51.509865,
-                            longitude: -0.118092,
-                            latitudeDelta: 0.0922,
-                            longitudeDelta: 0.0421
-                        })
-                    }}
-                />}
-            </View>
-            <Map
-                componentStyle = {styles.map}
-                initialRegion={{
-                    latitude: 51.509865,
-                    longitude: -0.118092,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
-                }}
-                region = {region}
-            >
-                <Marker
-                    coordinate={region}
-                    pinColor="black"
-                    // draggable={true}
-                    // onDragEnd={(e) => {
-                    //     setRegion({
-                    //         latitude: e.nativeEvent.coordinate.latitude,
-                    //         longitude: e.nativeEvent.coordinate.longitude,
-                    //         latitudeDelta: 0.0922,
-                    //         longitudeDelta: 0.0421
-                    //     })
-                    // }}
-                >
-                    <Callout>
-                        <Text>I'm here</Text>
-                    </Callout>
-                </Marker>
-                <Circle center = {region} radius={1000} />
-            </Map>
-
-            { showNextPageButton &&
-                <TouchableOpacity
-                    style = {styles.next_page_section}
-                    onPress = {() => navigation.navigate('MyApp', {
-                        latitude: region.latitude,
-                        longitude: region.longitude
-                    })}
-                >
-                    <Image
-                        source = {require("../Assets/Icons/arrow.png")}
-                        style = {styles.next_page_button}
+                <View style = {styles.search_section}>
+                    <View style = {styles.google_places_autocomplete_container} >
+                    <PlacesAutocomplete
+                        placeholder = 'Search'
+                        onPressF = {(data, details = null) => {
+                            // 'details' is provided when fetchDetails = true
+                            setRegion({
+                                latitude: details.geometry.location.lat,
+                                longitude: details.geometry.location.lng,
+                                latitudeDelta: 0.0922,
+                                longitudeDelta: 0.0421
+                            })
+                            setNextPage(true)
+                            let x = data["description"].toString()
+                            setTextInput(x)
+                        }}
+                        query = {{
+                            key: GOOGLE_AUTOCOMPLETE_API_KEY,
+                            language: 'en',
+                            components: "country:GB",
+                            types: "address",
+                            radius: 3000,
+                            location: `${region.latitude}, ${region.longitude}`
+                        }}
+                        styles={{
+                            container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 },
+                            listView: { backgroundColor: "white" }
+                        }}
+                        textInputProps = {{
+                            value: textInput,
+                            onChangeText: (textInput) => setTextInput(textInput)
+                        }}
                     />
-                </TouchableOpacity>
-            }
+                    </View>
+                </View>
+                <View style = {styles.reset_location_button}>
+                    {
+                        showNextPageButton && !keyboardShown &&
+                        <Button
+                            title="Search for a new location"
+                            onPress={() => {
+                                setTextInput("")
+                                setNextPage(false)
+                                setRegion({
+                                    latitude: 51.509865,
+                                    longitude: -0.118092,
+                                    latitudeDelta: 0.0922,
+                                    longitudeDelta: 0.0421
+                                })
+                            }}
+                        />
+                    }
+                </View>
+                <Map
+                    componentStyle = {styles.map}
+                    initialRegion={{
+                        latitude: 51.509865,
+                        longitude: -0.118092,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421
+                    }}
+                    region = {region}
+                >
+                    <Marker
+                        coordinate={region}
+                        pinColor="black"
+                        // draggable={true}
+                        // onDragEnd={(e) => {
+                        //     setRegion({
+                        //         latitude: e.nativeEvent.coordinate.latitude,
+                        //         longitude: e.nativeEvent.coordinate.longitude,
+                        //         latitudeDelta: 0.0922,
+                        //         longitudeDelta: 0.0421
+                        //     })
+                        // }}
+                    >
+                        <Callout>
+                            <Text>You are here</Text>
+                        </Callout>
+                    </Marker>
+                    <Circle center = {region} radius={1000} />
+                </Map>
 
+                { showNextPageButton &&
+                    <TouchableOpacity
+                        style = {styles.next_page_section}
+                        onPress = {() => navigation.navigate('MyApp', {
+                            latitude: region.latitude,
+                            longitude: region.longitude
+                        })}
+                    >
+                        <Image
+                            source = {require("../Assets/Icons/arrow.png")}
+                            style = {styles.next_page_button}
+                        />
+                    </TouchableOpacity>
+                }
+            </View>
+            </TouchableWithoutFeedback>
         </View>
     )
 }
